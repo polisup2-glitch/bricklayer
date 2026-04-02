@@ -421,26 +421,61 @@
     .cta-box {
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      padding: 28px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 24px;
+      padding: 56px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 56px;
     }
 
-    .cta-box h2 {
-      margin: 0 0 12px;
+    .cta-text h2 {
+      margin: 0 0 16px;
       font-size: clamp(34px, 5vw, 72px);
       line-height: 0.95;
       letter-spacing: -0.06em;
       text-transform: uppercase;
     }
 
-    .cta-box p {
+    .cta-text p {
       margin: 0;
-      max-width: 620px;
+      max-width: 480px;
       color: var(--muted);
       font-size: 16px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 24px;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 15px;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--text);
     }
 
     .cta-btn {
@@ -451,10 +486,24 @@
       height: 52px;
       padding: 0 18px;
       background: var(--text);
-      color: white;
+      color: var(--white);
       font-size: 14px;
       font-weight: 800;
       text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .cta-btn:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 1100px) {
+      .cta-box {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
     }
 
     footer {
@@ -736,18 +785,32 @@
     <section class="cta" id="contact">
       <div class="container">
         <div class="cta-box">
-          <div>
+          <div class="cta-text">
             <h2>
-              SPACE,<br />
-              LAYERED.
+              PARTNERSHIP<br />
+              INQUIRY.
             </h2>
             <p>
-              브릭레이어는 공간이 아니라 방식입니다.
-              사람의 하루에 무엇을 더할 것인지, 그리고 그 경험이 어떻게 다시 쌓일 것인지에서 시작합니다.
+              브릭레이어와 함께 새로운 가치를 쌓아갈 파트너를 기다립니다.
+              제휴 및 공간 대관 문의는 아래 폼을 통해 남겨주세요.
             </p>
           </div>
 
-          <a href="mailto:hello@bricklayer.co.kr" class="cta-btn">Contact</a>
+          <form action="https://formspree.io/f/xgoplwrp" method="POST" class="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="성함 또는 업체명" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="email@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="문의 내용을 입력해주세요." required></textarea>
+            </div>
+            <button type="submit" class="cta-btn">Send Inquiry</button>
+          </form>
         </div>
       </div>
     </section>
